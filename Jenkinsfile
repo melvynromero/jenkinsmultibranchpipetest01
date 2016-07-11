@@ -27,4 +27,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
 
    // build
     
+    echo "Choice ${unChoiceParameter}" 
+
+
 }
