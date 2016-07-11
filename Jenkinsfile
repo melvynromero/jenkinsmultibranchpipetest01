@@ -16,6 +16,8 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
              [$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'otChoiceParameter']] ]])  
 
 
+   input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'Environment']]
+
     stage 'Start Process ...'
 
     echo 'Hello from Multi Branch Pipeline with JenkinsFile'
@@ -32,6 +34,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
     
     echo "Choice ${unChoiceParameter}" 
     echo "Choice ${utChoiceParameter}" 
+    echo "Choice ${Environment}" 
 
 
 }
