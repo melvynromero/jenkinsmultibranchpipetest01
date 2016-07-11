@@ -33,7 +33,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
    // build
     
     echo "Choice ${unChoiceParameter}" 
-    echo "Choice ${utChoiceParameter}" 
+    echo "Choice ${otChoiceParameter}" 
     echo "Choice ${Environment}" 
 
 
