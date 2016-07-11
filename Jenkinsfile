@@ -10,7 +10,7 @@ node {
 
  // properties([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', defaultValue: '', description: 'Param Choice Test', name : 'MY_PARAM_CHOICE']]]])
 
-properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  '[Value1, Value2]' , description: '', name: 'unChoiceParameter']]]])
+properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1 \\r?\\n Value2' , description: '', name: 'unChoiceParameter']]]])
 
 
     stage 'Start Process ...'
