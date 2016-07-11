@@ -4,7 +4,7 @@ node {
 
     // hudson.model.StringParameterDefinition
 
-    properties([[$class: 'hudson.model.StringParameterDefinition', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM'], [$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name: 'MY_PARAM2']]]])
+    properties([[$class: 'hudson.model.StringParameterDefinition', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM'], [$class: 'hudson.model.StringParameterDefinition', defaultValue: '', description: 'Some Description', name: 'MY_PARAM2']]]])
 
 
     stage 'Start Process ...'
