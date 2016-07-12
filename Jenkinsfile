@@ -34,7 +34,8 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
     
     echo "Choice ${unChoiceParameter}" 
     echo "Choice ${otChoiceParameter}" 
-    echo "Choice ${userinput01}" 
+   // echo "Choice ${userinput01}" 
+    echo ("Print user input " + [userinput01])
 
 
 }
