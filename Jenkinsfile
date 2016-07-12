@@ -19,8 +19,11 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
 */
 
    stage 'Input and Parameters'
-
+/*
  input id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
+
+*/
+
 
 /*
 def userInput = input(
@@ -42,6 +45,13 @@ def userInput = input(
 
 */
 
+def userInput = input(
+ id: 'userInput', message: 'Let\'s promote?', parameters: [
+ //[$class: 'TextParameterDefinition', defaultValue: 'Testing Input', description: 'Environment', name: 'env']
+ [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'env']
+]) 
+echo ("Env: "+userInput)
+
 
 /*
    def userInput =  input ( 
@@ -52,7 +62,7 @@ def userInput = input(
 */
     //echo "Choice ${unChoiceParameter}" 
     //echo "Choice ${otChoiceParameter}" 
-    echo ("Userinput01: "+userInput['userInput01'])
+    //echo ("Userinput01: "+userInput['userInput01'])
 
    
     stage 'Start Process ...'
@@ -71,7 +81,7 @@ def userInput = input(
     
    // echo "Choice ${unChoiceParameter}" 
   //  echo "Choice ${otChoiceParameter}" 
-    echo ("Userinput01: "+userInput['userInput01'])
+   // echo ("Userinput01: "+userInput['userInput01'])
 
 
    // echo "Choice ${userinput01}" 
