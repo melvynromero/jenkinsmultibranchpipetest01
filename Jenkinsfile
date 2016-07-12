@@ -12,9 +12,11 @@ node {
 
  // properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'unChoiceParameter']]]])
 
+/*
 properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'unChoiceParameter'],
              [$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'otChoiceParameter']] ]])  
 
+*/
 
    stage 'Input and Parameters'
 
@@ -46,8 +48,8 @@ def userInput = input(
   [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
 ])
 */
-    echo "Choice ${unChoiceParameter}" 
-    echo "Choice ${otChoiceParameter}" 
+    //echo "Choice ${unChoiceParameter}" 
+    //echo "Choice ${otChoiceParameter}" 
     echo ("Userinput01: "+userInput['userInput01'])
 
    
@@ -65,8 +67,8 @@ def userInput = input(
 
    // build
     
-    echo "Choice ${unChoiceParameter}" 
-    echo "Choice ${otChoiceParameter}" 
+   // echo "Choice ${unChoiceParameter}" 
+  //  echo "Choice ${otChoiceParameter}" 
     echo ("Userinput01: "+userInput['userInput01'])
 
 
