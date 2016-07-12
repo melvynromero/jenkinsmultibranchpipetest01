@@ -16,10 +16,22 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
              [$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'otChoiceParameter']] ]])  
 
 
+   stage 'Input and Parameters'
+
   // input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
 
+def userInput = input(
+ id: 'userInput', message: 'Let\'s promote?', parameters: [
+ [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
+ [$class: 'TextParameterDefinition', defaultValue: 'uat1', description: 'Target', name: 'target'],
+ [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
+]) 
 
-   def userInput =  input ( id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']] )
+    echo "Choice ${unChoiceParameter}" 
+    echo "Choice ${otChoiceParameter}" 
+    echo ("Userinput01: "+userInput['userInput01'])
+
+   // def userInput =  input ( id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']] )
 
     stage 'Start Process ...'
 
@@ -29,7 +41,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
 
     // git url: 'https://github.com/melvynromero/testjenkins01.git'
 
-    stage 'Build ...'
+    stage 'Build and Show...'
 
 
 
@@ -38,6 +50,8 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
     echo "Choice ${unChoiceParameter}" 
     echo "Choice ${otChoiceParameter}" 
     echo ("Userinput01: "+userInput['userInput01'])
+
+
    // echo "Choice ${userinput01}" 
   //  echo ("Print user input " + userInput['userInput01'])
 
