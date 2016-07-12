@@ -19,7 +19,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
   // input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
 
 
-   def userInput =  input ( id: 'Question01', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']] )
+   def userInput =  input ( id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']] )
 
     stage 'Start Process ...'
 
