@@ -16,7 +16,10 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
              [$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'otChoiceParameter']] ]])  
 
 
-   input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
+  // input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
+
+
+   def userInput =  input ( id: 'Question01', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']] )
 
     stage 'Start Process ...'
 
@@ -35,7 +38,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
     echo "Choice ${unChoiceParameter}" 
     echo "Choice ${otChoiceParameter}" 
    // echo "Choice ${userinput01}" 
-    echo ("Print user input " + [userinput01])
+    echo ("Print user input " + userInput['userInput01'])
 
 
 }
