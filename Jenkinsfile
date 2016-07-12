@@ -20,7 +20,7 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
 
    stage 'Input and Parameters'
 
-  // input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
+ input id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
 
 /*
 def userInput = input(
@@ -32,6 +32,7 @@ def userInput = input(
 
 */
 
+/*
 def userInput = input(
  id: 'userInput', message: 'Let\'s promote?', parameters: [
  // [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
@@ -39,6 +40,7 @@ def userInput = input(
  [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
 ]) 
 
+*/
 
 
 /*
