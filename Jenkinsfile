@@ -20,21 +20,21 @@ properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefi
 
   // input message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
 
-/*
+
 def userInput = input(
  id: 'userInput', message: 'Let\'s promote?', parameters: [
  [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
  [$class: 'TextParameterDefinition', defaultValue: 'uat1', description: 'Target', name: 'target'],
  [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
 ]) 
-*/
 
+/*
    def userInput =  input ( 
   id: 'userInput', message: 'Environment to Deploy', parameters: [
  // [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
   [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
 ])
-
+*/
     echo "Choice ${unChoiceParameter}" 
     echo "Choice ${otChoiceParameter}" 
     echo ("Userinput01: "+userInput['userInput01'])
