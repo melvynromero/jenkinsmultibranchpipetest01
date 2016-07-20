@@ -1,91 +1,19 @@
-node {
 
-    // properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM'], [$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name: 'MY_PARAM2']]]])
+import hudson.model.*
 
-    // hudson.model.StringParameterDefinition
+node() {
 
-    // properties([[$class: 'hudson.model.StringParameterDefinition', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM'], [$class: 'hudson.model.StringParameterDefinition', defaultValue: '', description: 'Some Description', name: 'MY_PARAM2']]]])
+    stage "Begin ... "
 
-   // properties([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM']]]])
+    stage "git from repository"
+//    git branch: '*/master',  depth:'1' , timeout :'50', shalow: true, noTags: true, changelog: false, credentialsId: '535861b5-0c33-40a0-ba61-b4b71e826d42', poll: false, url: 'http://stash.verizon.com/scm/npdids/iot-integration.git'
 
- // properties([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', defaultValue: '', description: 'Param Choice Test', name : 'MY_PARAM_CHOICE']]]])
+// checkout([$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'Stash', repoUrl: 'http://stash.verizon.com/projects/NPDIDS/repos/iot-integration'], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', noTags: true, reference: '', shallow: true, timeout: 60]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '535861b5-0c33-40a0-ba61-b4b71e826d42', url: 'http://stash.verizon.com/scm/npdids/iot-integration.git']]])
 
- // properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'unChoiceParameter']]]])
+    stage "Ansible Script"
 
-/*
-properties ([[$class: 'hudson.model.ParametersDefinitionProperty', parameterDefinitions: [[$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'unChoiceParameter'],
-             [$class: 'hudson.model.ChoiceParameterDefinition', choices:  'Value1\nValue2' , description: '', name: 'otChoiceParameter']] ]])  
-
-*/
-
-   stage 'Input and Parameters'
-/*
- input id: 'userInput', message: 'Environment to Deploy', parameters: [[$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userinput01']]
-
-*/
-
-
-/*
-def userInput = input(
- id: 'userInput', message: 'Let\'s promote?', parameters: [
- [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
- [$class: 'TextParameterDefinition', defaultValue: 'uat1', description: 'Target', name: 'target'],
- [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
-]) 
-
-*/
-
-/*
-def userInput = input(
- id: 'userInput', message: 'Let\'s promote?', parameters: [
- // [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
- // [$class: 'TextParameterDefinition', defaultValue: 'uat1', description: 'Target', name: 'target'],
- [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
-]) 
-
-*/
-
-def userInput = input(
- id: 'userInput', message: 'Let\'s promote?', parameters: [
- //[$class: 'TextParameterDefinition', defaultValue: 'Testing Input', description: 'Environment', name: 'env']
- [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'env']
-]) 
-echo ("Env: "+userInput)
-
-
-/*
-   def userInput =  input ( 
-  id: 'userInput', message: 'Environment to Deploy', parameters: [
- // [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
-  [$class: 'hudson.model.ChoiceParameterDefinition', choices: 'local\nProduction', description: '', name: 'userInput01']
-])
-*/
-    //echo "Choice ${unChoiceParameter}" 
-    //echo "Choice ${otChoiceParameter}" 
-    //echo ("Userinput01: "+userInput['userInput01'])
-
-   
-    stage 'Start Process ...'
-
-    echo 'Hello from Multi Branch Pipeline with JenkinsFile'
-
-    stage 'git my Proyect from GitHub .... '
-
-    // git url: 'https://github.com/melvynromero/testjenkins01.git'
-
-    stage 'Build and Show...'
-
-
-
-   // build
-    
-   // echo "Choice ${unChoiceParameter}" 
-  //  echo "Choice ${otChoiceParameter}" 
-   // echo ("Userinput01: "+userInput['userInput01'])
-
-
-   // echo "Choice ${userinput01}" 
-  //  echo ("Print user input " + userInput['userInput01'])
-
-
+ansiblePlaybook credentialsId: 'df34571d-fb9b-49a6-9ce2-8bdf8ebd39a1', installation: 'Ansible', inventory: 'inventory', playbook: 'provisioning/splunk-setup.yml', sudoUser: null
+    stage "... Ending"
 }
+
+
